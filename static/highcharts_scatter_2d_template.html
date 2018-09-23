@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+
+<div id="container" style="min-width: 310px; height: 600px; max-width: 900px; margin: 0 auto"></div>
+
+
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Pokémon'
+    },
+    xAxis: {
+        visible: false,
+        min: {{ limits.xmin }},
+        max: {{ limits.xmax }},        
+    },
+    yAxis: {
+        visible: false,
+        min: {{ limits.ymin }},
+        max: {{ limits.ymax }},        
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 0,
+        y: 0,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+        borderWidth: 1
+    },
+    tooltip: {
+        shared: true,
+        useHTML: true,
+        headerFormat: '',
+        pointFormat: '<table border="0"><tr><td><img width="50" height="50" src="data:image/png;base64,{point.image_data}"></td><td valign="middle" align"right"><h2>{point.name}</h2></td></tr></table>',
+        footerFormat: '',
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 4,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(100,100,100)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            }
+        }
+    },
+    series: {{series|jsonify}}
+});
+</script>
+
+</body>
+</html>
+
+
+
