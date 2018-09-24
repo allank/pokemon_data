@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div id="container" style="min-width: 310px; height: 600px; max-width: 900px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 450px; max-width: 800px; margin: 0 auto"></div>
 
 
 <script>
@@ -44,7 +44,7 @@ Highcharts.chart('container', {
         shared: true,
         useHTML: true,
         headerFormat: '',
-        pointFormat: '<table border="0"><tr><td><img width="50" height="50" src="data:image/png;base64,{point.image_data}"></td><td valign="middle" align"right"><h2>{point.name}</h2></td></tr></table>',
+        pointFormat: '<table border="0" width="100%"><tr><td align="center" colspan="2"><img width="50" height="50" src="data:image/png;base64,{point.image_data}"><br /><h2>{point.name}</h2></td></tr><tr><th>Attack</th><td>{point.attack}</td></tr><tr><th>Defense</th><td>{point.defense}</td></tr><tr><th>HP</th><td>{point.hp}</td></tr></table>',
         footerFormat: '',
     },
     plotOptions: {
